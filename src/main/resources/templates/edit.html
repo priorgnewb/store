@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование продукта E-STORE</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/products/{id}(id=${product.getId()})}" th:object="${product}">
+
+    <table>
+        <tr>
+            <td>
+                <label for="marka" th:width="200">Имя продукта: </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{marka}" id="marka"/>
+                <div style="color:red" th:if="${#fields.hasErrors('marka')}" th:errors="*{marka}">Ошибка в имени
+                    продукта
+                </div>
+                <br/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="description" th:width="200">Описание продукта: </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{description}" id="description"/>
+                <div style="color:red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Ошибка в
+                    описании продукта
+                </div>
+                <br/>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                <label for="amount" th:width="200">Количество продукта: </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{amount}" id="amount"/>
+                <div style="color:red" th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Ошибка количества
+                    продукта
+                </div>
+                <br/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="price" width="200">Цена продукта: </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{price}" id="price"/>
+                <div style="color:red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Ошибка цены продукта
+                </div>
+            </td>
+        </tr>
+
+        <br/>
+        <br/>
+    </table>
+
+    <input type="submit" value="Обновить продукт"/>
+</form>
+
+<br/>
+<a href="/products">К списку продуктов</a>
+<br/>
+<a href="/"> Панель администратора </a>
+</body>
+</html>

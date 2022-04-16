@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин техники E-STORE</title>
+
+</head>
+<body>
+
+
+<h2>Информация о продукте</h2>
+<table th:border="1" th:cellpadding="5" style="border-collapse: collapse; border: 1px solid black;">
+    <thead>
+    <tr>
+        <th width="50">ID</th>
+        <th width="350">Продукт</th>
+        <th width="350">Описание</th>
+        <th width="100">Количество</th>
+        <th width="100">Цена, р</th>
+        <th width="200">Управление</th>
+
+    </tr>
+    </thead>
+
+    <td th:text="${item.getId()}">AAA</td>
+    <td th:text="${item.getMarka()}">BBB</a></td>
+    <td th:text="${item.getDescription()}">CCC</td>
+    <td th:text="${item.getAmount()}">DDD</td>
+    <td th:text="${item.getPrice()}">EEE</td>
+
+    <td>
+        <form th:method="DELETE" th:action="@{/products/{id}(id=${item.getId()})}">
+            <input type="submit" value="Удалить"/>
+        </form>
+
+        <form th:action="@{/products/{id}/edit(id=${item.getId()})}">
+            <button>Редактировать</button>
+        </form>
+
+    </td>
+
+</table>
+<a href="/products">К списку продуктов</a>
+<br/>
+<a href="/"> Панель администратора </a>
+</body>
+</html>

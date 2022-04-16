@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин техники E-STORE</title>
+
+</head>
+<body>
+
+
+<h2>Список продуктов E-STORE</h2>
+<table th:border="1" th:cellpadding="5" style="border-collapse: collapse; border: 1px solid black;">
+<thead>
+<tr>
+    <th width="50">ID</th>
+    <th width="350">Продукт</th>
+    <th width="100">Количество</th>
+    <th width="100">Цена, р</th>
+</tr>
+</thead>
+
+    <tr th:each="product : ${allprods}">
+        <td th:text="${product.getId()}">AAA</td>
+        <td><a th:href="@{/products/{id}(id=${product.getId()})}" th:text="${product.getMarka()}">BBB</a></td>
+        <td th:text="${product.getAmount()}">DDD</td>
+        <td th:text="${product.getPrice()}">EEE</td>
+    </tr>
+
+</table>
+
+<br/>
+
+<form th:action="@{/products/new}">
+    <button>Добавить продукт</button>
+</form>
+<br/>
+<br/>
+<a href="/"> Панель администратора </a>
+</body>
+</html>
