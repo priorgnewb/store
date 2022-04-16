@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  postgres:
+    build: ./services/postgres/
+    image: postgresapp
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=store
+      - POSTGRES_PASSWORD=postgres
+    restart: always
+    volumes:
+      - db-volume:/var/lib/postgresql/data
+    
+  app:
+    build: ./services/app/
+    image: storeapp
+    ports:
+      - 8092:8091
+    depends_on:
+      - postgres        
+    restart: always
+volumes:
+  db-volume:
+    
